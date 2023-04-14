@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+   
+    <a class="navbar-brand" href="#"> <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list-check" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+      </svg>
+      TO-DO LIST</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link"  routerLinkActive="active" routerLink="/PageInitial/Detalles" > Detalles Generales</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/PageInitial/Registros">Registrar Tarea</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"  routerLinkActive="active" routerLink="/PageInitial/Viewtask">Ver Todas las Tareas</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/PageInitial/taskpendientes">Ver Pendientes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/PageInitial/taskCompletadas">Ver Completadas</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+          
+          >
+            Opciones de Usuaio
+          </a>
+          <ul class="dropdown-menu bg-primary" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" id="op" routerLinkActive="active" routerLink="/PageInitial/Infouser">Información</a></li>
+            <li><a class="dropdown-item" id="op" routerLinkActive="active" routerLink="/PageInitial/UpdateAcount" >Actualizar Datos</a></li>
+            <li><a class="dropdown-item" id="op" href="#">Cerrar Sesión</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <br>
+<div class="container-fluid">
+    <router-outlet></router-outlet>
+
+    
+</div>
+<br><br><br><br><br><br><br>
+<footer class="bg-primary text-light">
+    <div class="container py-3">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Contacto</h3>
+          <p>Teléfono: +57 3245644212</p>
+          <p>Email: Jonnierandresteranmorales@gmail.com</p>
+        </div>
+        <div class="col-md-6">
+          <h3>Síguenos</h3>
+          <a href="#">Facebbokk<i class="fab fa-facebook fa-2x"></i></a>
+          <a href="#">twitter<i class="fab fa-twitter fa-2x"></i></a>
+          <a href="#">website<i class="fab fa-instagram fa-2x"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="bg-secondary text-center py-2">
+      <p class="m-0">© 2023 To-do List, Inc. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  
