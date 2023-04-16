@@ -1,7 +1,11 @@
 
 <div class="container-fluid">
-    <h2>Informacion general </h2>
-    <h4>Registro de Actividad de: Username</h4>
+    <h2><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+      <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+    </svg>
+    Informacion general </h2>
+    <h4>Registro de Actividad de: <span style="color:blue">{{UserName}} </span></h4>
     <hr>
     <br>
     <div class="row">
@@ -12,7 +16,7 @@
               <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/>
             </svg> Tareas Registradas</h5> <hr>
             <p class="card-text">Username, en este momento has realizado una variedad de registros en la app </p>
-            <p class="card-text">Tareas Encontradas: 54</p>
+            <p class="card-text">Tareas Encontradas: {{Registros}}</p>
             <a href="#" class="btn btn-primary" routerLink="/PageInitial/Viewtask">Más Detalles</a>
           </div>
         </div>
@@ -25,7 +29,7 @@
               <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
             </svg>  Tareas Pendientes </h5> <hr>
             <p class="card-text">Username, En este momento tienes Algunas tareas pendientes, esperando por ser completadas, ¡Vamos!</p>
-            <p class="card-text">Tareas Pendientes: 20</p>
+            <p class="card-text">Tareas Pendientes: {{Pendientes}}</p>
             <a href="#" class="btn btn-primary" routerLink="/PageInitial/taskpendientes">Más Detalles</a>
           </div>
         </div>
@@ -38,7 +42,7 @@
               <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
             </svg> Tareas Completadas</h5> <hr>
             <p class="card-text">Username, En este momento tienes Algunas tareas Completadas, Sigue asi, ¡Vamos!</p>
-            <p class="card-text">Tareas Completadas: 34</p>
+            <p class="card-text">Tareas Completadas: {{Completadas}}</p>
             <a href="#" class="btn btn-primary" routerLink="/PageInitial/taskCompletadas">Más Detalles</a>
           </div>
         </div>

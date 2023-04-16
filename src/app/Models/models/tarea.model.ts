@@ -1,11 +1,11 @@
 import { Usuario } from "./usuario.model";
 
 export class Tarea {
-    private id?:number;
-    private titulo:string;
-    private descripcion:string;
-    private estado:string;
-    private id_user:Usuario;
+     id?:number;
+     titulo:string;
+    descripcion:string;
+     estado:string;
+     id_user:Usuario;
 
     constructor(titulo:string, descripcion:string, estado:string, id_user:Usuario){
         this.titulo = titulo;
@@ -20,7 +20,7 @@ export class Tarea {
     }
 
     
-    public get Id():number{
+    public getId():number{
         return this.id!;
     }
 
@@ -30,7 +30,7 @@ export class Tarea {
     }
 
     
-    public get Titulo() : string {
+    public getTitulo() : string {
         return this.titulo;
     }
 
@@ -41,7 +41,7 @@ export class Tarea {
 
     
     
-    public get Descripcion() : string {
+    public getDescripcion() : string {
         return  this.descripcion;
     }
     
@@ -50,7 +50,7 @@ export class Tarea {
     }
 
     
-    public get Estado() : string {
+    public getEstado() : string {
         return this.estado;
     }
     
@@ -60,7 +60,7 @@ export class Tarea {
     }
     
     
-    public get Id_user() : Usuario {
+    public getId_user() : Usuario {
         return this.Id_user
     }
     

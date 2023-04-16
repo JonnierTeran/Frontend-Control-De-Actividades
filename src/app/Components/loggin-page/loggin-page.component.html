@@ -29,7 +29,7 @@
 
               <!--<p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p> -->
 
-              <button class="btn btn-outline-light btn-lg px-5" type="submit">I N G R E S A R</button> <br> <br>
+              <button class="btn btn-outline-light btn-lg px-5" type="submit" [disabled]="!Session.valid">I N G R E S A R</button> <br> <br>
               <button class="btn btn-outline-light btn-lg px-5" type="submit" (click)="SingUp()">R E G I S T R A R</button>
 
             </form>

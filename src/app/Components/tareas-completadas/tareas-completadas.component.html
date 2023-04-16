@@ -1,56 +1,41 @@
 <div class="container">
-    <h2>Username, estas son tus tareas Completadas</h2>
+  <h2><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
+  </svg> 
+  <span style="color:blue;"> {{UserName}}</span>, estas son tus tareas Completadas</h2>
+  <svg style="float: left;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-90deg-left" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z"/>
+  </svg>
     <hr> <br>
-    <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Nombre de la tarea</th>
-            <th>&nbsp; &nbsp;&nbsp; &nbsp; Descripción</th>
-            <th>Estado</th>
-            <th></th>
-            <th>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Tarea 1</td>
-            <td>Descripción de la tarea 1</td>
-            <td>Completada</td>
-            <td></td>
-            <td>
-            <a href="#" class="btn btn-primary">Pendiente</a>                 
-            <a href="#" class="btn btn-primary">Editar</a>
-            <a href="#" class="btn btn-danger">Eliminar</a>
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Tarea 2</td>
-            <td>Descripción de la tarea 2</td>
-            <td>Completada</td>
-            <td></td>
-            <td>
-                <a href="#" class="btn btn-primary">Pendiente</a>                
+    <div class="table-responsive">
+
+      <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nombre de la tarea</th>
+              <th>&nbsp; &nbsp;&nbsp; &nbsp; Descripción</th>
+              <th>Estado</th>
+              <th></th>
+              <th>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let Completada of Completada; index as i;">
+              <td>{{i+1}}</td>
+              <td>{{Completada.titulo}}</td>
+              <td>{{Completada.descripcion}}</td>
+              <td>{{Completada.estado}}</td>
+              <td></td>
+              <td>
+              <a href="#" class="btn btn-primary">Pendiente</a>                 
               <a href="#" class="btn btn-primary">Editar</a>
               <a href="#" class="btn btn-danger">Eliminar</a>
-            </td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Tarea 3</td>
-            <td>Descripción de la tarea 3</td>
-            <td>Completada</td>
-            <td></td>
-            <td>
-                <a href="#" class="btn btn-primary">Pendiente</a>                
-              <a href="#" class="btn btn-primary">Editar</a>
-              <a href="#" class="btn btn-danger">Eliminar</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+    </div>
 
 </div>

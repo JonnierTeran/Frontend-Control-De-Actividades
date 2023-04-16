@@ -18,6 +18,7 @@ import { TareasPendientesComponent } from './Components/tareas-pendientes/tareas
 import { TareasCompletadasComponent } from './Components/tareas-completadas/tareas-completadas.component';
 import { InfoUserComponent } from './Components/info-user/info-user.component';
 import { ActualizarCuentaComponent } from './Components/actualizar-cuenta/actualizar-cuenta.component';
+import { TaskService } from './Services/services/task';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { ActualizarCuentaComponent } from './Components/actualizar-cuenta/actual
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [User],
+  providers: [User, TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
