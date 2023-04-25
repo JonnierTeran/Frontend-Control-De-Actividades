@@ -19,6 +19,7 @@ import { TareasCompletadasComponent } from './Components/tareas-completadas/tare
 import { InfoUserComponent } from './Components/info-user/info-user.component';
 import { ActualizarCuentaComponent } from './Components/actualizar-cuenta/actualizar-cuenta.component';
 import { TaskService } from './Services/services/task';
+import { FooterComponent } from './Components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { TaskService } from './Services/services/task';
     TareasPendientesComponent,
     TareasCompletadasComponent,
     InfoUserComponent,
-    ActualizarCuentaComponent
+    ActualizarCuentaComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

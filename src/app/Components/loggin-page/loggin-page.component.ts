@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Usuario } from 'src/app/Models/models/usuario.model';
 import { User } from 'src/app/Services/services/user';
 import Swal from 'sweetalert2';
 
@@ -37,9 +38,29 @@ export class LogginPageComponent implements OnInit {
     if(this.Session.valid){
       this._UserSerice.UserByEmail(this.Session.get('email')!.value).subscribe(
         Response => {
-          console.log(Response);
-          //Validacion del formulario y el objeto usuario obtenido
-            if (this.Session.get('email')!.value == Response.email 
+          
+          //Si el resultado es null o el objeto creado en el servicio
+          if (typeof Response === 'object' && Response.hasOwnProperty('name')){
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: Response.name, 
+              showConfirmButton: false,
+              timer: 2500
+            })
+          } // Si el objeto es un usuario existente y alguno de sus campos no son correctos
+          else if (this.Session.get('email')!.value != Response.email 
+          || this.Session.get('contraseña')!.value != Response.contraseña) {
+            //Informacion de Error de credenciales
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: "Email y/o contraseña incorreta", 
+              showConfirmButton: false,
+              timer: 2500
+            })
+          }//Validacion del formulario correctamente diligenciado y el objeto usuario obtenido son iguales
+            else if (this.Session.get('email')!.value == Response.email 
                 && this.Session.get('contraseña')!.value == Response.contraseña) {
                 
                   //Alerta de confirmacion
@@ -57,25 +78,11 @@ export class LogginPageComponent implements OnInit {
                   sessionStorage.setItem('nombres', Response.nombres);
                   sessionStorage.setItem('apellidos', Response.apellidos);
 
+                  
                   //Redireccion a pagina principal
                   this._Router.navigate(["/PageInitial/Detalles"]);
-                  document.title = "Control de Actividades - Home";
-                  
-              
-              
-            }
-            
-            else{
-              //Informacion de Error de credenciales
-              Swal.fire({
-                position: 'center',
-                icon: 'error',
-                title: Response.name, 
-                showConfirmButton: false,
-                timer: 2500
-              })
-
-            }
+      
+            } 
 
         }
         , Err => {

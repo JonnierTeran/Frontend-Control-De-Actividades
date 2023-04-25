@@ -19,6 +19,7 @@ export class DetallesGralComponent implements OnInit{
     
   }
   ngOnInit(): void {
+      document.title = "Home - Informacion General";
   
 
     this._TaskService.GetCountTask(+sessionStorage.getItem('Id')!).subscribe(

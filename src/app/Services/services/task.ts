@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, map } from "rxjs";
+import { Tarea } from "src/app/Models/models/tarea.model";
 
 @Injectable() 
 export class TaskService {
@@ -9,6 +10,12 @@ export class TaskService {
 
     constructor(private _HttpClient:HttpClient){
         this.Url = 'http://localhost:8080/app/task';
+    }
+
+
+    //Registrar Treas Por usuario
+    public RegTask(Task:Tarea):Observable<any>{
+      return this._HttpClient.post(this.Url +'/Registro', Task);
     }
 
    //Ver Tareas Por usuario
@@ -43,6 +50,22 @@ export class TaskService {
         return this._HttpClient.get<any>(this.Url +'/Count/Completed/'+ idUser);
     }
 
+    //Actualizar Estado a Completada
+    public CompletarTask(id_Task:Number):Observable<any>{
+      return this._HttpClient.get<any>(this.Url+"/ActualizarCompletada/"+id_Task);
+
+    }
+
+     //Actualizar Estado a pendiente
+     public EditTaskPendiente(id_Task:Number):Observable<any>{
+      return this._HttpClient.get<any>(this.Url+"/ActualizarPendiente/"+id_Task);
+
+    }
+
+    public DeleteTask(id:number):Observable<any>{
+      console.log(id);
+      return this._HttpClient.delete(this.Url+"/Delete/"+id);
+    }
 
 
 }

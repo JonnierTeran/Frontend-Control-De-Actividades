@@ -5,11 +5,12 @@ export class Usuario {
     private email:string;
     private contraseña:string;
 
-    constructor(nombres:string, apellidos:string, email:string, contraseña:string){
+    constructor(nombres:string, apellidos:string, email:string, contraseña:string, id?:number){
         this.nombres= nombres;
         this.apellidos= apellidos;
         this.email = email;
         this.contraseña=contraseña;
+        this.Id! = id!;
 
     }
     

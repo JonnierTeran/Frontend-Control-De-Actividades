@@ -1,6 +1,9 @@
 <div class="container">
-    <h2>Tareas Registradas por: <span style="color:blue"> {{UserName}} </span></h2>
-    <hr> <br>
+    <h2>Tareas Registradas por: <span style="color:blue"> {{UserName}} </span>
+    </h2>
+    <hr> 
+    <button class="btn btn-primary" style="margin-bottom: 18px; position: relative;" (click)="RegistrarN()">Registrar Nueva Tarea</button>
+    <button  class="btn btn-danger" style="margin-bottom: 18px; position: relative; margin-left:5px;"(click)="Detalles()"> Detalles Generales</button>
     <div class="table-responsive">
     <table class="table table-striped">
         <thead>
@@ -15,20 +18,24 @@
             <th>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; Acciones</th>
           </tr>
         </thead>
-        <tbody *ngFor="let Task of Task; index as i;">
-          <tr>
+        <tbody>
+          <tr *ngFor="let Task of Task; index as i;">
             <td>{{i+1}}</td>
-            <td>{{Task.titulo}}</td>
-            <td>{{Task.descripcion}}</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{Task.titulo}}</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{Task.descripcion}}</td>
             <td>{{Task.estado}}</td>
             <td></td>
             <td>
               <a href="#" class="btn btn-primary">Editar</a>
-              <a href="#" class="btn btn-danger">Eliminar</a>
+              <a (click)="EliminarTarea(Task.id!)" class="btn btn-danger">Eliminar</a>
             </td>
           </tr>
         </tbody>
       </table>
+      <div *ngIf="Task.length < 1">
+        <br>
+        <p>No existen Registros en este momento</p>
+      </div>
     </div>
 
 </div>
