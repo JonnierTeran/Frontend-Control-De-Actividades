@@ -10,7 +10,7 @@ export class Usuario {
         this.apellidos= apellidos;
         this.email = email;
         this.contraseña=contraseña;
-        this.Id! = id!;
+        this.id! = id!;
 
     }
     

@@ -9,7 +9,7 @@ import { TareasRegistradasComponent } from './Components/tareas-registradas/tare
 import { TareasPendientesComponent } from './Components/tareas-pendientes/tareas-pendientes.component';
 import { TareasCompletadasComponent } from './Components/tareas-completadas/tareas-completadas.component';
 import { InfoUserComponent } from './Components/info-user/info-user.component';
-import { ActualizarCuentaComponent } from './Components/actualizar-cuenta/actualizar-cuenta.component';
+import { ActualizarCuentaComponent } from './Modals/actualizar-cuenta/actualizar-cuenta.component';
 
 
 const routes: Routes = [

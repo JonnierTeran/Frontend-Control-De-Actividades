@@ -3,11 +3,12 @@ import { Usuario } from "./usuario.model";
 export class Tarea {
      id?:number;
      titulo:string;
-    descripcion:string;
+     descripcion:string;
      estado:string;
      id_user:Usuario;
 
-    constructor(titulo:string, descripcion:string, estado:string, id_user:Usuario){
+    constructor(titulo:string, descripcion:string, estado:string, id_user:Usuario, id?:number){
+        this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.estado = estado;

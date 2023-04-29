@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { TaskService } from 'src/app/Services/services/task';
+
+
 
 @Component({
   selector: 'app-info-user',
@@ -8,6 +10,8 @@ import { TaskService } from 'src/app/Services/services/task';
   styleUrls: ['./info-user.component.css']
 })
 export class InfoUserComponent {
+
+
   UserName:string;
   LastName:string
   Email:string;
@@ -16,13 +20,16 @@ export class InfoUserComponent {
   Completadas!:number;
 
   constructor(private _TaskService: TaskService, private _Router:Router){
+   
     this.UserName = sessionStorage.getItem('nombres')!;
     this.LastName = sessionStorage.getItem('apellidos')!;
     this.Email = sessionStorage.getItem('email')!;
     
   }
+
+
   ngOnInit(): void {
-  
+    
 
     this._TaskService.GetCountTask(+sessionStorage.getItem('Id')!).subscribe(
        Response => this.Registros = Response ,
@@ -37,4 +44,10 @@ export class InfoUserComponent {
           err => console.log(err))
        
   }
+  
+  
+
+  
+ 
+  
 }

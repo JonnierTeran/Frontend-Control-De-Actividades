@@ -30,7 +30,8 @@
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "src/sidebar.js"
+              "src/sidebar.js", "src/assets/Modal.js"
+             
             ]
           },
           "configurations": {
@@ -95,7 +96,7 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [ 
-            "node_modules/bootstrap/dist/js/bootstrap.min.js", "src/sidebar.js"]
+            "node_modules/bootstrap/dist/js/bootstrap.min.js", "src/sidebar.js", "src/assets/Modal.js"]
           }
         }
       }

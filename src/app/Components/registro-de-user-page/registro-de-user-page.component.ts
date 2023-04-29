@@ -62,6 +62,8 @@ export class RegistroDeUserPageComponent implements OnInit{
         });
 
         this.Registro.reset();
+        this._Router.navigate(["Loggin"]);
+        document.title = "Loggin / Inicio de Session";
         
       }, Error =>{
         //Informacion de falla de Solicitud http

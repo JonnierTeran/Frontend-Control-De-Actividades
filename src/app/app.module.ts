@@ -17,9 +17,13 @@ import { TareasRegistradasComponent } from './Components/tareas-registradas/tare
 import { TareasPendientesComponent } from './Components/tareas-pendientes/tareas-pendientes.component';
 import { TareasCompletadasComponent } from './Components/tareas-completadas/tareas-completadas.component';
 import { InfoUserComponent } from './Components/info-user/info-user.component';
-import { ActualizarCuentaComponent } from './Components/actualizar-cuenta/actualizar-cuenta.component';
+import { ActualizarCuentaComponent } from './Modals/actualizar-cuenta/actualizar-cuenta.component';
 import { TaskService } from './Services/services/task';
 import { FooterComponent } from './Components/footer/footer.component';
+import { ActualizarTaskComponent } from './Modals/actualizar-task/actualizar-task.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 
 @NgModule({
   declarations: [
@@ -34,14 +38,17 @@ import { FooterComponent } from './Components/footer/footer.component';
     TareasCompletadasComponent,
     InfoUserComponent,
     ActualizarCuentaComponent,
-    FooterComponent
+    FooterComponent,
+    ActualizarTaskComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
+  entryComponents: [ActualizarCuentaComponent],
   providers: [User, TaskService],
   bootstrap: [AppComponent]
 })
