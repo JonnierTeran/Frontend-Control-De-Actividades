@@ -1,9 +1,18 @@
+//Modulos
 import { Component, OnInit } from '@angular/core';
+
+//Servicios
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ActualizarTaskComponent } from 'src/app/Modals/actualizar-task/actualizar-task.component';
-import { Tarea } from 'src/app/Models/models/tarea.model';
 import { TaskService } from 'src/app/Services/services/task';
+
+//Models
+import { Tarea } from 'src/app/Models/models/tarea.model';
+
+//Components
+import { ActualizarTaskComponent } from 'src/app/Modals/actualizar-task/actualizar-task.component';
+
+//Libs
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,14 +24,15 @@ export class TareasPendientesComponent implements OnInit {
   UserName: String;
   Pendientes: Tarea[];
 
-  constructor(private _TaskService: TaskService, private _Router: Router,  private _modalService: NgbModal) {
+  //Injecction de servicios e inicializacion 
+  constructor(private _TaskService: TaskService, private _Router: Router, private _modalService: NgbModal) {
     this.UserName = sessionStorage.getItem('nombres')!;
     this.Pendientes = [];
   }
 
-  ngOnInit(): void {
-    this._TaskService
-      .GetTasktUserPendientes(+sessionStorage.getItem('Id')!)
+  //Ciclo de vida para cargar Tareas pendentes con el servicio
+  public ngOnInit(): void {
+    this._TaskService.GetTasktUserPendientes(+sessionStorage.getItem('Id')!)
       .subscribe(
         (Responsee) => {
           this.Pendientes = Responsee;
@@ -33,7 +43,9 @@ export class TareasPendientesComponent implements OnInit {
     document.title = 'Tareas Pendientes';
   }
 
-  RegistrarN() {
+
+  //Metodo de navegacion para ir al componente de registros 
+  public RegistrarN():void {
     Swal.fire({
       position: 'center',
       icon: 'success',
@@ -46,7 +58,8 @@ export class TareasPendientesComponent implements OnInit {
     document.title = 'Formularo De registro';
   }
 
-  Detalles() {
+  //Metodo de navegacion para ir a componente de detalles
+  public Detalles():void {
     Swal.fire({
       position: 'center',
       icon: 'success',
@@ -59,7 +72,9 @@ export class TareasPendientesComponent implements OnInit {
     document.title = 'Home - Informacion general';
   }
 
-  CompletarTask(Id_Task: number): void {
+
+  //Metodo para actualizar el estado de una tarea de pendiente a completada
+  public CompletarTask(Id_Task: number): void {
     Swal.fire({
       title: 'Realmente desea marcar esta tarea como Completada?',
       icon: 'warning',
@@ -69,7 +84,9 @@ export class TareasPendientesComponent implements OnInit {
       confirmButtonText: 'Confirmar',
       cancelButtonText: 'Cancelar',
     }).then((result) => {
-      if (result.isConfirmed) {
+      if (result.isConfirmed) { //Confimacion del usuario
+        
+        //Actualizacion
         this._TaskService.CompletarTask(Id_Task).subscribe(
           (Response) => {
             Swal.fire({
@@ -88,7 +105,8 @@ export class TareasPendientesComponent implements OnInit {
     });
   }
 
-  EliminarTarea(Id_Task: number): void {
+  //Metodo para eliminar una tarea
+  public EliminarTarea(Id_Task: number): void {
     Swal.fire({
       title: 'Eliminar Tarea?',
       icon: 'warning',
@@ -98,7 +116,9 @@ export class TareasPendientesComponent implements OnInit {
       confirmButtonText: 'Confirmar',
       cancelButtonText: 'Cancelar',
     }).then((result) => {
-      if (result.isConfirmed) {
+      if (result.isConfirmed) { //Confimacion
+
+        //Eliminacion
         this._TaskService.DeleteTask(Id_Task).subscribe(
           (Response) => {
             Swal.fire({
@@ -109,6 +129,7 @@ export class TareasPendientesComponent implements OnInit {
               timer: 2500,
             });
 
+            //Consulta de tareas pendientes
             this._TaskService
               .GetTasktUserPendientes(+sessionStorage.getItem('Id')!)
               .subscribe(
@@ -124,27 +145,30 @@ export class TareasPendientesComponent implements OnInit {
     });
   }
 
-  openModal(item: Tarea) {
+
+  //Metodo para abrir el modal de edit de las tareas
+  public openModal(item: Tarea):void {
+    //abrir el modal
     const modalRef = this._modalService.open(ActualizarTaskComponent, {
       keyboard: false,
       backdrop: 'static',
     });
+    //Envia datos a la propiedad item del componente de actualizar
     modalRef.componentInstance.item = item;
 
-    modalRef.result
-      .then((result) => {
-        
-        this._TaskService
-              .GetTasktUserPendientes(+sessionStorage.getItem('Id')!)
-              .subscribe(
-                (Responsee) => {
-                  this.Pendientes = Responsee;
-                },
-                (Err) => console.log(Err)
-              );
-      
-   
-          }).catch((Error) => {
+    //Manejo y accion de la respuesta de cierre (close())
+    modalRef.result.then((result) => {
+
+        this._TaskService.GetTasktUserPendientes(+sessionStorage.getItem('Id')!)
+          .subscribe(
+            (Responsee) => {
+              this.Pendientes = Responsee;
+            },
+            (Err) => console.log(Err)
+          );
+
+
+      }).catch((Error) => {
         console.log('asd', Error);
       });
   }

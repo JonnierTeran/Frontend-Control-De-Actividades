@@ -1,3 +1,5 @@
+/*/Loggin background*/
+
 .gradient-custom {
     /* fallback for old browsers */
     background: #6a11cb;
@@ -10,13 +12,15 @@
     }
 
 
-
+/* Active Menu */
   .active{
     background-color: rgb(252, 92, 0) ;
     border-radius: 30px;
     color: rgb(255, 255, 255) !important;
     
  }  
+
+/*Option menu*/
 
  a{
   margin: 10px;
@@ -27,11 +31,6 @@
  #op:hover{
   background-color: initial;
  }
-
-
-
-
-    
     
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

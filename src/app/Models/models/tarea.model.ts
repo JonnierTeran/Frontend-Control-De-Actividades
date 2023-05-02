@@ -1,13 +1,17 @@
+//Modelo usuario
 import { Usuario } from "./usuario.model";
 
-export class Tarea {
-     id?:number;
-     titulo:string;
-     descripcion:string;
-     estado:string;
-     id_user:Usuario;
 
-    constructor(titulo:string, descripcion:string, estado:string, id_user:Usuario, id?:number){
+export class Tarea {
+    //Atributos de una tarea
+    id?: number;
+    titulo: string;
+    descripcion: string;
+    estado: string;
+    id_user: Usuario; //Objeto de tipo Usuario
+
+    //Inicializacion de atributos
+    constructor(titulo: string, descripcion: string, estado: string, id_user: Usuario, id?: number) {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -15,54 +19,55 @@ export class Tarea {
         this.id_user = id_user;
     }
 
-    
-    public set Id(Id : number) {
+
+    //Gett y sett 
+    public set Id(Id: number) {
         this.id = Id;
     }
 
-    
-    public getId():number{
+
+    public getId(): number {
         return this.id!;
     }
 
-    
-    public set Titulo(titulo : string) {
+
+    public set Titulo(titulo: string) {
         this.Titulo = titulo;
     }
 
-    
-    public getTitulo() : string {
+
+    public getTitulo(): string {
         return this.titulo;
     }
 
-    
-    public set Descripcion(descripcion : string) {
+
+    public set Descripcion(descripcion: string) {
         this.descripcion = descripcion;
     }
 
-    
-    
-    public getDescripcion() : string {
-        return  this.descripcion;
+
+
+    public getDescripcion(): string {
+        return this.descripcion;
     }
-    
-    public set Estado(estado : string) {
+
+    public set Estado(estado: string) {
         this.estado = estado;
     }
 
-    
-    public getEstado() : string {
+
+    public getEstado(): string {
         return this.estado;
     }
-    
-    
+
+
     public set Id_user(user: Usuario) {
         this.id_user = user;
     }
-    
-    
-    public getId_user() : Usuario {
+
+
+    public getId_user(): Usuario {
         return this.Id_user
     }
-    
+
 }

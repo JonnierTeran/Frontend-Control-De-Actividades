@@ -1,8 +1,15 @@
+//modulos del componente
 import { Component, OnInit } from '@angular/core';
+
+//Servicios
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/app/Models/models/usuario.model';
 import { User } from 'src/app/Services/services/user';
+
+//Modelo de datos
+import { Usuario } from 'src/app/Models/models/usuario.model';
+
+//Libreria de alertas
 import Swal from 'sweetalert2';
 
 @Component({
@@ -10,29 +17,29 @@ import Swal from 'sweetalert2';
   templateUrl: './registro-de-user-page.component.html',
   styleUrls: ['./registro-de-user-page.component.css']
 })
-export class RegistroDeUserPageComponent implements OnInit{
+export class RegistroDeUserPageComponent implements OnInit {
 
-  public Registro:FormGroup; //Formulario Reactivo
-  
-  constructor(private _Router:Router,
-    private _formBuilder: FormBuilder,
-    private _UserSerice:User){
+  public Registro: FormGroup; //Formulario Reactivo
 
-      //Inicializacion del formulario                
+  constructor(private _Router: Router,private _formBuilder: FormBuilder, private _UserSerice: User) {
+
+    //Inicializacion del formulario                
     this.Registro = this._formBuilder.group({
-      nombres : ['', Validators.required],
+      nombres: ['', Validators.required],
       apellidos: ['', Validators.required],
-      email: ['',  [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$') ]],
-      contraseña : ['', Validators.required]
+      email: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$')]],
+      contraseña: ['', Validators.required]
     })
-    }
+  }
 
-    ngOnInit(): void {
-      this.Registro.reset;
+  //Ciclo de vida para resetear el form
+  public ngOnInit(): void {
+    this.Registro.reset;
   }
 
 
-  Cancelar():void{
+  //Metodo para regresar al Loggin
+  public Cancelar(): void {
     Swal.fire({
       position: 'center',
       icon: 'success',
@@ -42,30 +49,33 @@ export class RegistroDeUserPageComponent implements OnInit{
     this._Router.navigate(["Loggin"]);
     document.title = "Loggin / Inicio de Session";
 
-
-
   }
 
-  public Registrar(){
-    
-    let Obj:Usuario;
+
+  //Metodo para registrar un nuevo usuario
+  public Registrar():void {
+
+    //Creacion del Objeto a Registrar
+    let Obj: Usuario;
     Obj = this.Registro.value;
+
+    //Metodo del servicio para registrar usuario
     this._UserSerice.GetNewUser(Obj).subscribe(
       Response => {
-         //Alerta de confirmacion
-         Swal.fire({
+        //Alerta de confirmacion
+        Swal.fire({
           position: 'center',
           icon: 'info',
           title: Response.Mensaje,
           showConfirmButton: true,
-      
+
         });
 
         this.Registro.reset();
         this._Router.navigate(["Loggin"]);
         document.title = "Loggin / Inicio de Session";
-        
-      }, Error =>{
+
+      }, Error => {
         //Informacion de falla de Solicitud http
         Swal.fire({
           position: 'center',
@@ -74,8 +84,9 @@ export class RegistroDeUserPageComponent implements OnInit{
           showConfirmButton: false,
           timer: 3000
         })
+        console.log(Error);
+      });
 
-        console.log(Error);  })
-    
   }
+  
 }

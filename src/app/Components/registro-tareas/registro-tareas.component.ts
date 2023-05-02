@@ -1,9 +1,16 @@
+//Modulos
 import { Component, OnInit } from '@angular/core';
+
+//Servicios
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TaskService } from 'src/app/Services/services/task';
+
+//Modelos de datos
 import { Tarea } from 'src/app/Models/models/tarea.model';
 import { Usuario } from 'src/app/Models/models/usuario.model';
-import { TaskService } from 'src/app/Services/services/task';
+
+//Libreria de alert
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,58 +20,69 @@ import Swal from 'sweetalert2';
 })
 export class RegistroTareasComponent implements OnInit {
 
-  Registro:FormGroup;
+  Registro: FormGroup; //Formulario Reactivo
 
-  constructor(private _FormBuilder:FormBuilder, private _TaskService:TaskService, private _Router:Router){
+  //Inicializacion de Atributos e Injeccion de Servicios
+  constructor(private _FormBuilder: FormBuilder, private _TaskService: TaskService, private _Router: Router) {
 
+    //Formulario Reactivo
     this.Registro = this._FormBuilder.group({
-      titulo: ['' , Validators.required],
-      descripcion: ['' , Validators.required],
-      estado:['', Validators.required]
+      titulo: ['', Validators.required],
+      descripcion: ['', Validators.required],
+      estado: ['', Validators.required]
     })
   }
-  
-  ngOnInit(): void {
+
+  //Ciclo de vida
+  public ngOnInit(): void {
     document.title = "Registro De Tareas";
     Swal.fire({
       position: 'center',
       icon: 'success',
       showConfirmButton: false,
       timer: 2500
-      })
+    })
   }
 
 
-  Registrar():void{
-    let Task:Tarea;
-    let User:Usuario;
+  //Metodo para registrar una tarea
+  public Registrar(): void {
+    
+    //Creacion del Objeto de la tarea a Registrar
+    let Task: Tarea;
+    let User: Usuario;
+
+    //Creacion del usuario
     User = new Usuario(sessionStorage.getItem('nombres')!, sessionStorage.getItem('apellidos')!,
-                      sessionStorage.getItem('email')!, '',+sessionStorage.getItem('Id')!);
+      sessionStorage.getItem('email')!, '', +sessionStorage.getItem('Id')!);
 
-    Task = new Tarea(this.Registro.get('titulo')!.value,this.Registro.get('descripcion')!.value,
-                    this.Registro.get('estado')!.value, User);
+    //Tarea a Registrar
+    Task = new Tarea(this.Registro.get('titulo')!.value, this.Registro.get('descripcion')!.value,
+      this.Registro.get('estado')!.value, User);
 
+    //Metodo del servicio para Registrar la tarea
     this._TaskService.RegTask(Task).subscribe
-              (Response => {
-                Swal.fire({
-                  position: 'center',
-                  icon: 'success',
-                  title: Response.Mensaje,
-                  showConfirmButton: false,
-                  timer: 2000
-                });
-            
-                //Redireccion a pagina principal
-                this._Router.navigate(["/PageInitial/Detalles"]);
-                document.title = "Control de Actividades - Home";
-          
-              }, Err => console.log(Err))
-    
-    
+      (Response => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: Response.Mensaje,
+          showConfirmButton: false,
+          timer: 2000
+        });
+
+        //Redireccion a pagina principal
+        this._Router.navigate(["/PageInitial/Detalles"]);
+        document.title = "Control de Actividades - Home";
+
+      }, Err => console.log(Err))
+
+
   }
 
 
-  public Cancelar():void{
+  //Metodo para cancelar el registro
+  public Cancelar(): void {
 
     Swal.fire({
       position: 'center',
@@ -78,6 +96,6 @@ export class RegistroTareasComponent implements OnInit {
     document.title = "Control de Actividades - Home";
 
   }
-  }
+}
 
 

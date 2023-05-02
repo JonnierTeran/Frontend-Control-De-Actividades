@@ -1,10 +1,12 @@
 export class Usuario {
-    private id?:number;
-    private nombres:string;
-    private apellidos:string;
-    private email:string;
-    private contraseña:string;
+    //Atributos del Usuario
+    id?:number;
+    nombres:string;
+    apellidos:string;
+    email:string;
+    contraseña:string;
 
+    //Inicializacion de atributos
     constructor(nombres:string, apellidos:string, email:string, contraseña:string, id?:number){
         this.nombres= nombres;
         this.apellidos= apellidos;
@@ -14,6 +16,7 @@ export class Usuario {
 
     }
     
+    //Sett y Gett
     public set Id(id : number) {
         this.id = id;
     }

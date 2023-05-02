@@ -1,63 +1,67 @@
-<!--Inicio del modal-->
- <!-- Button trigger modal -->
- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  Actualizar Datos
- </button>
- 
- <!-- Modal -->
- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-   <div class="modal-dialog ">
-     <div class="modal-content">
-       <div class="modal-header">
-         .
-         <h1 class="modal-title fs-5" id="staticBackdropLabel">Actualización de Datos</h1>
-         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-       </div>
-       <div class="modal-body">
-         <div  class="container">
-           <h3><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-               <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
-             </svg>  Mi cuenta  </h3>
-           <hr>
-           <h4><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
-               <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
-             </svg>  Actualizar información de la cuenta</h4>
-           <hr>
- 
- 
-           <form>
-             <div class="form-group">
-               <label for="nombre">Nombres</label>
-               <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre">
-             </div>
-             <div class="form-group">
-               <label for="apellido">Apellidos</label>
-               <input type="text" class="form-control" id="apellido" placeholder="Ingresa tu apellido">
-             </div>
-             <div class="form-group">
-               <label for="email">Email</label>
-               <input type="email" class="form-control" id="email" placeholder="Ingresa tu email">
-             </div>
-             <div class="form-group">
-               <label for="contrasena">Contraseña Actual</label>
-               <input type="password" class="form-control" id="contrasena" placeholder="Ingresa tu contraseña">
-             </div>
-             <div class="form-group">
-               <label for="contrasena">Nueva Contraseña</label>
-               <input type="password" class="form-control" id="contrasena" placeholder="Ingresa tu contraseña">
-             </div>
-                  
-           </form>
-         </div>
-         .
-       </div>
-       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" >A c t u a l i z a r</button>
-         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">C a n c e l a r</button>
-         
-       </div>
-     </div>
-   </div>
- </div>
- 
- <!--Fin del modal-->
+<!--Modal de actualizacion de cuenta-->
+
+<div class="modal-dialog ">
+  <div class="modal-content">
+    <div class="modal-header">
+      .
+      <!--- Titulo del modal-->
+
+      <h1 class="modal-title fs-5" id="staticBackdropLabel">Actualización de Datos</h1>
+      <button type="button" class="btn-close" (click)="activeModal.dismiss()" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+
+      <!--- Cuerpo del modal-->
+
+      <div class="container">
+
+        <h4><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor"
+            class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+            <path
+              d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z" />
+          </svg> Actualizar información de la cuenta</h4>
+        <hr>
+        <br>
+        
+
+        <!--- Formulario Reactivo del modal-->
+        <form [formGroup]="ActualizarUser">
+
+          <div class="form-group">
+            <label for="nombre">Nombres</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre"
+              formControlName="nombres">
+          </div>
+
+          <br>
+          <div class="form-group">
+            <label for="apellido">Apellidos</label>
+            <input type="text" class="form-control" id="apellido" placeholder="Ingresa tu apellido"
+              formControlName="apellidos">
+          </div>
+
+          <br>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Ingresa tu email" formControlName="email"
+              readonly>
+          </div>
+          <br>
+
+          <br>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="Actualizar()" [disabled]="ActualizarUser.invalid">A c
+              t u a l i z a r</button>
+            <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">C a n c e l a r</button>
+
+          </div>
+
+          <!--- fin del formulario del modal-->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--Fin del modal-->

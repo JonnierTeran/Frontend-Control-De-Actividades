@@ -15,16 +15,16 @@ export class TareasRegistradasComponent implements OnInit {
   UserName: string;
   Task: Tarea[];
 
-  public constructor(
-    private _TaskService: TaskService,
-    private _Router: Router,
-    private _modalService: NgbModal
-  ) {
+  //Injecction de servicios e inicializacion 
+  public constructor( private _TaskService: TaskService, private _Router: Router,
+                        private _modalService: NgbModal ) {
+                          
     this.UserName = sessionStorage.getItem('nombres')!;
     this.Task = [];
   }
 
-  ngOnInit(): void {
+  //Ciclo de vida para cargar Tareas pendentes con el servicio
+  public ngOnInit(): void {
     this._TaskService.GetTasktUser(+sessionStorage.getItem('Id')!).subscribe(
       (Response) => {
         this.Task = Response;
@@ -43,6 +43,8 @@ export class TareasRegistradasComponent implements OnInit {
     document.title = 'Tareas Registradas';
   }
 
+
+  //Metodo de navegacion para ir al componente de registros 
   RegistrarN() {
     Swal.fire({
       position: 'center',
@@ -56,7 +58,8 @@ export class TareasRegistradasComponent implements OnInit {
     document.title = 'Formularo De registro';
   }
 
-  Detalles() {
+  //Metodo de navegacion para ir a componente de detalles
+  public Detalles(): void {
     Swal.fire({
       position: 'center',
       icon: 'success',
@@ -69,7 +72,10 @@ export class TareasRegistradasComponent implements OnInit {
     document.title = 'Formularo De registro';
   }
 
-  EliminarTarea(Id_Task: number): void {
+
+
+  //Metodo para eliminar una tarea
+  public EliminarTarea(Id_Task: number): void {
     Swal.fire({
       title: 'Eliminar Tarea?',
       icon: 'warning',
@@ -79,7 +85,9 @@ export class TareasRegistradasComponent implements OnInit {
       confirmButtonText: 'Confirmar',
       cancelButtonText: 'Cancelar',
     }).then((result) => {
-      if (result.isConfirmed) {
+      if (result.isConfirmed) { //Confimacion
+
+        //Eliminacion
         this._TaskService.DeleteTask(Id_Task).subscribe(
           (Response) => {
             Swal.fire({
@@ -90,6 +98,7 @@ export class TareasRegistradasComponent implements OnInit {
               timer: 2500,
             });
 
+            //Consulta de tareas 
             this._TaskService
               .GetTasktUser(+sessionStorage.getItem('Id')!)
               .subscribe(
@@ -105,13 +114,21 @@ export class TareasRegistradasComponent implements OnInit {
     });
   }
 
-  openModal(item: Tarea) {
+
+
+  //Metodo para abrir el modal de edit de las tareas
+  public openModal(item: Tarea): void {
+    //abrir el modal
     const modalRef = this._modalService.open(ActualizarTaskComponent, {
       keyboard: false,
       backdrop: 'static',
     });
+
+    //Envia datos a la propiedad item del componente de actualizar
     modalRef.componentInstance.item = item;
 
+
+    //Manejo y accion de la respuesta de cierre (close())
     modalRef.result
       .then((result) => {
 

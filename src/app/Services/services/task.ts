@@ -1,13 +1,19 @@
+//Modulos del servicio
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, map } from "rxjs";
+
+//modelo de datos para el servicio
 import { Tarea } from "src/app/Models/models/tarea.model";
 
-@Injectable() 
+//Logica del servicio
+@Injectable() //Injectable de servicios externos
 export class TaskService {
     
+  //Rutas de EndPoints
     private Url:string;
 
+    //Injeccion del servicios exteros e inicializacion de atributos
     constructor(private _HttpClient:HttpClient){
         this.Url = 'http://localhost:8080/app/task';
     }
@@ -62,10 +68,11 @@ export class TaskService {
 
     }
 
+    //Eliminar Tarea
     public DeleteTask(id:number):Observable<any>{
-      console.log(id);
       return this._HttpClient.delete(this.Url+"/Delete/"+id);
     }
 
+    
 
 }
